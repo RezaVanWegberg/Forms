@@ -1,4 +1,4 @@
-<?php var_dump($_GET) ?>
+<?php var_dump($_POST) ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +11,10 @@
 </head>
 <body>
     <div class="container2">
-    <!-- <?php var_dump($_GET) ?> -->
+    <!-- <?php var_dump($_POST) ?> -->
     <h1>The information entered is:</h1>
-    Name: <?php echo $_GET["name"]; ?><br>
-    Email: <?php echo $_GET["email"] ?> <br>
+    Name: <?php echo $_POST["name"]; ?><br>
+    Email: <?php echo $_POST["email"] ?> <br>
     </div>
 </body>
 </html>

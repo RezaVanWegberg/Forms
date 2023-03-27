@@ -10,9 +10,25 @@
 </head>
 
 <body>
+<?php
+
+$name = $email = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
 
     <div class="container">
-        <form action="welcome.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <p>
                 <label for="name">Name :</label>
                 <input type="text" name="name">
@@ -23,6 +39,13 @@
             </p>
             <input id="submit" type="submit" value="submit">
         </form>
+        <?php
+        echo "<h2>Your Input:</h2>";
+        echo $name;
+        echo "<br>";
+        echo $email;
+
+?>
     </div>
 </body>
 

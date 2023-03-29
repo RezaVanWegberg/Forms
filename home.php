@@ -12,19 +12,29 @@
 <body>
 <?php
 
+$nameErr = $emailErr = "";
 $name = $email = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = test_input($_POST["name"]);
-  $email = test_input($_POST["email"]);
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+      } else {
+        $name = test_input($_POST["name"]);
+      }
+      
+      if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+      } else {
+        $email = test_input($_POST["email"]);
+      }
+  }
+  
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 ?>
 
     <div class="container">
@@ -32,10 +42,13 @@ function test_input($data) {
             <p>
                 <label for="name">Name :</label>
                 <input type="text" name="name">
+                <span class="error">* <?php echo $nameErr;?></span>
             </p>
             <p>
                 <label for="email">Email :</label>
                 <input type="text" name="email">
+                <span class="error">* <?php echo $emailErr;?></span>
+
             </p>
             <input id="submit" type="submit" value="submit">
         </form>

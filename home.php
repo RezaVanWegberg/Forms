@@ -15,6 +15,8 @@
 $nameErr = $emailErr = "";
 $name = $email = "";
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])) {
         $nameErr = "Name is required";
@@ -37,16 +39,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 ?>
 
+
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <p>
                 <label for="name">Name :</label>
-                <input type="text" name="name">
+                <input type="text" name="name" id="name" value="<?php echo $name;?>">
                 <span class="error">* <?php echo $nameErr;?></span>
             </p>
             <p>
                 <label for="email">Email :</label>
-                <input type="text" name="email">
+                <input type="text" name="email" id="email" value="<?php echo $email;?>">
                 <span class="error">* <?php echo $emailErr;?></span>
 
             </p>
